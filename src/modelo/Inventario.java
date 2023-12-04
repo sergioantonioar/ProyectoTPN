@@ -29,8 +29,10 @@ public class Inventario {
     // Metodo para mostrar inventario
     public void mostrarInventario() {
         System.out.println("Productos disponibles:");
-        for (Producto producto : productos) {
-            System.out.println(producto.getNombre() + " - Precio: $" + producto.getPrecio());
+
+        for (int i = 0; i < productos.length; i++) {
+            Producto producto = productos[i];
+            System.out.println((i+1)+". "+producto.getNombre()+" - Precio: $" + producto.getPrecio());
         }
     }
 }
