@@ -1,5 +1,6 @@
 package controlador;
 
+
 import modelo.Cliente;
 import modelo.Producto;
 
@@ -29,6 +30,7 @@ public class Venta {
 
     public void realizarVenta() {
         Scanner sc = new Scanner(System.in);
+        StringBuilder resultadoVenta = new StringBuilder(); // Para la construccion de la cadena
 
         //Creando nuevo cliente y pedir nombre
         Cliente nuevoCliente = new Cliente();
@@ -36,40 +38,55 @@ public class Venta {
 
         //Asignando el nuevo cliente
         cliente = nuevoCliente;
-        
+
         double totalVentas = 0;
-        
-        boolean continuarVenta;
+
+        boolean continuarVenta = true;
         do {
 
-            System.out.println("Ingrese la numeracion del producto a comprar: ");
-            int indiceProducto = sc.nextInt();
+            System.out.println("Ingrese la numeración del producto a comprar: ");
+            int indiceProducto;
+
+            //Si se ingresa algo que no puede ser convertido a numero entero
+            try {
+                indiceProducto = Integer.parseInt(sc.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Error: Ingrese un número válido.");
+                continue; //Para volver al inicio del bucle y permitir ingresar un valor nuevamente 
+            }
 
             System.out.println("Ingrese la cantidad del producto: ");
-            int cantidad = sc.nextInt();
-            sc.nextLine();
+            int cantidad;
+            try {
+                cantidad = Integer.parseInt(sc.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Error: Ingrese un número válido.");
+                continue;
+            }
 
             validarProductoEfectuarVenta(indiceProducto, cantidad);
-            
-            //Calculando y mostrando el valor total de la venta actual
-            totalVentas += this.totalVenta; // totalVenta es una variable miembro
 
-            // Preguntar si desea continuar o terminar la compra
-            System.out.println("¿Desea continuar con la compra? (si/no)");
+            //Acumulando el total de la venta actual a total de ventas
+            totalVentas += calcularTotalVenta(productos[indiceProducto - 1].getPrecio(), cantidad);
+
+            // Se utiliza la función equalsIgnoreCase para que no sea sensible a mayúsculas o minúsculas
+            resultadoVenta.append("Venta realizada. Total de la venta actual: $").append(this.totalVenta).append("\n");
+            resultadoVenta.append("Total hasta el momento: $").append(totalVentas).append("\n");
+            resultadoVenta.append("¿Desea continuar con la compra? (si/no)");
+
+            System.out.println(resultadoVenta.toString());
+            resultadoVenta.setLength(0); //Establece la longitud en 0, para asegurar que este vacio antes de comenzar la construccion
+
             String respuesta = sc.nextLine();
-
-            if (respuesta.equalsIgnoreCase("no")) {
-                System.out.println("Compra terminada. Total de ventas: $" + totalVentas);
-                break; // Salir del bucle si el usuario desea terminar la compra
-            }
-            
-            //Se utiliza la funcion equalsIgnoreCase para que no sea sensible a mayusculas o minusculas
             continuarVenta = respuesta.equalsIgnoreCase("si");
 
-            // Calcular y mostrar el total de la venta actual
-            System.out.println("Total hasta el momento: $" + totalVentas);
         } while (continuarVenta);
-        
+
+        resultadoVenta.append("Compra terminada. Total de ventas: $").append(totalVentas).append("\n");
+
+        // Imprimier usando StringBuilder
+        System.out.println(resultadoVenta.toString());
+
         sc.close(); //cerrando Scanner
     }
 
@@ -86,8 +103,11 @@ public class Venta {
 
     //Metodo para validar el producto y efectuar la venta
     private void validarProductoEfectuarVenta(int indiceProducto, int cantidad) {
-        if (indiceProducto >= 1 && indiceProducto < productos.length) {
+        if ((indiceProducto >= 1) && (indiceProducto <= productos.length)) {
             Producto productoVendido = productos[indiceProducto - 1];
+
+            // Actualizar la cantidad vendida en el producto
+            productoVendido.setCantidadVendida(productoVendido.getCantidadVendida() + cantidad);
 
             String nombreProducto = productoVendido.getNombre();
             double precioUnitario = productoVendido.getPrecio();
@@ -101,8 +121,43 @@ public class Venta {
             System.out.println("Total venta: $" + this.totalVenta);
             System.out.println("Fecha: " + obtenerFecha());
         } else {
-            System.out.println("Producto no válido");
+//            System.out.println("Producto no válido");
+            System.out.println("Producto no válido. Índice ingresado: " + indiceProducto + ". Tamaño del array de productos: " + productos.length);
         }
+    }
+
+    // Método para mostrar detalles de la venta al finalizar
+    public void mostrarDetallesVenta() {
+        System.out.println("====================================================================");
+        System.out.println("Detalles de la venta:");
+        System.out.println("====================================================================");
+        System.out.println("Nombre del cliente: " + cliente.getNombre());
+        System.out.println("Fecha y hora de la venta: " + obtenerFecha());
+
+        System.out.println("Productos comprados:");
+        System.out.printf("%-20s %-10s %-15s %-15s\n", "Producto", "Cantidad", "Precio Unitario", "Total Venta");
+
+        double totalVentaDeProductos = 0;
+
+        for (int i = 0; i < productos.length; i++) {
+            Producto producto = productos[i];
+
+            // Verificar si el producto fue comprado (cantidad vendida mayor que cero)
+            if (producto.getCantidadVendida() > 0) {
+                double totalVentaProducto = calcularTotalVenta(producto.getPrecio(), producto.getCantidadVendida());
+                totalVentaDeProductos += totalVentaProducto;
+
+                System.out.printf("%-20s %-10d %-15.2f %-15.2f\n",
+                        producto.getNombre(),
+                        producto.getCantidadVendida(),
+                        producto.getPrecio(),
+                        calcularTotalVenta(producto.getPrecio(), producto.getCantidadVendida()));
+            }
+        }
+        System.out.println("====================================================================");
+        System.out.println("Total de la venta: $" + totalVentaDeProductos);
+        System.out.println("====================================================================");
+
     }
 
     public String getNumero() {
