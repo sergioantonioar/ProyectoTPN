@@ -10,7 +10,6 @@ import java.util.Scanner;
 
 public class Venta {
 
-    private String numero;
     private double totalVenta;
     private Cliente cliente;
     private Producto[] productos;
@@ -22,8 +21,7 @@ public class Venta {
         this.fechaHora = LocalDateTime.now();
     }
 
-    public Venta(String numero, Cliente cliente, Producto[] productos) {
-        this.numero = numero;
+    public Venta(Cliente cliente, Producto[] productos) {
         this.cliente = cliente;
         this.productos = productos;
     }
@@ -141,7 +139,7 @@ public class Venta {
         for (int i = 0; i < productos.length; i++) {
             Producto producto = productos[i];
 
-            // Verificar si el producto fue comprado (cantidad vendida mayor que cero)
+            // Verifica si el producto se compro (cantidad vendida mayor que cero)
             if (producto.getCantidadVendida() > 0) {
                 double totalVentaProducto = calcularTotalVenta(producto.getPrecio(), producto.getCantidadVendida());
                 totalVentaDeProductos += totalVentaProducto;
@@ -159,13 +157,7 @@ public class Venta {
 
     }
 
-    public String getNumero() {
-        return numero;
-    }
-
-    public void setNumero(String numero) {
-        this.numero = numero;
-    }
+    
 
     public Cliente getCliente() {
         return cliente;
