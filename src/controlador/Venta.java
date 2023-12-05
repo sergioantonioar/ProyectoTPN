@@ -121,8 +121,7 @@ public class Venta {
             System.out.println("Sub total: $" + this.totalVenta);
             System.out.println("Fecha: " + obtenerFecha());
         } else {
-//            System.out.println("Producto no válido");
-            System.out.println("Producto no válido. Índice ingresado: " + indiceProducto + ". Tamaño del array de productos: " + productos.length);
+            System.out.println("Producto no válido");
         }
     }
 
