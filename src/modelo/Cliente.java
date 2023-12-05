@@ -2,10 +2,7 @@ package modelo;
 
 import java.util.Scanner;
 
-/**
- *
- * @author Sergio
- */
+
 public class Cliente {
 
     private String nombre;
