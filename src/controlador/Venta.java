@@ -84,7 +84,7 @@ public class Venta {
 
         resultadoVenta.append("Compra terminada. Total de ventas: $").append(totalVentas).append("\n");
 
-        // Imprimier usando StringBuilder
+        // Imprimir usando StringBuilder
         System.out.println(resultadoVenta.toString());
 
         sc.close(); //cerrando Scanner
@@ -114,11 +114,11 @@ public class Venta {
 
             this.totalVenta = calcularTotalVenta(precioUnitario, cantidad);
 
-            System.out.println("Venta realizada:");
+            System.out.println("Producto agregado:");
             System.out.println("Producto: " + nombreProducto);
             System.out.println("Cantidad: " + cantidad);
             System.out.println("Precio unitario: $" + precioUnitario);
-            System.out.println("Total venta: $" + this.totalVenta);
+            System.out.println("Sub total: $" + this.totalVenta);
             System.out.println("Fecha: " + obtenerFecha());
         } else {
 //            System.out.println("Producto no válido");
@@ -135,7 +135,7 @@ public class Venta {
         System.out.println("Fecha y hora de la venta: " + obtenerFecha());
 
         System.out.println("Productos comprados:");
-        System.out.printf("%-20s %-10s %-15s %-15s\n", "Producto", "Cantidad", "Precio Unitario", "Total Venta");
+        System.out.printf("%-20s %-10s %-15s %-15s\n", "Producto", "Cantidad", "Precio Unitario", "Sub total");
 
         double totalVentaDeProductos = 0;
 
