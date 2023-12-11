@@ -1,0 +1,80 @@
+Detalles de la venta:
+Nombre del cliente: Jose
+Fecha y hora de la venta: 10-12-2023 11:13:01
+Productos comprados:
+Producto             Cantidad   Precio Unitario Sub total      
+Tonificadores Abdominales 2          125.00          250.00         
+Tobilleras           3          10.00           30.00          
+Total de la venta: $280.0
+
+=========================================
+Detalles de la venta:
+Nombre del cliente: Carlos
+Fecha y hora de la venta: 10-12-2023 11:17:01
+Productos comprados:
+Producto             Cantidad   Precio Unitario Sub total      
+Pelota Fitness       4          63.00           252.00         
+Total de la venta: $252.0
+
+=========================================
+Detalles de la venta:
+Nombre del cliente: Carlos
+Fecha y hora de la venta: 10-12-2023 11:32:41
+Productos comprados:
+Producto             Cantidad   Precio Unitario Sub total      
+Mat de Yoga          3          10.00           30.00          
+Total de la venta: $30.0
+
+=========================================
+Detalles de la venta:
+Nombre del cliente: Carlos
+Fecha y hora de la venta: 10-12-2023 11:33:04
+Productos comprados:
+Producto             Cantidad   Precio Unitario Sub total      
+Tobilleras           4          10.00           40.00          
+Rueda Abdominal      3          42.00           126.00         
+Total de la venta: $166.0
+
+=========================================
+Detalles de la venta:
+Nombre del cliente: sergio
+Fecha y hora de la venta: 10-12-2023 11:44:24
+Productos comprados:
+Producto             Cantidad   Precio Unitario Sub total      
+Fajas Reductoras     4          55.00           220.00         
+Pelota Fitness       1          63.00           63.00          
+Total de la venta: $283.0
+
+=========================================
+Detalles de la venta:
+Nombre del cliente: Jose
+Fecha y hora de la venta: 10-12-2023 21:51:05
+Productos comprados:
+Producto             Cantidad   Precio Unitario Sub total      
+Proteinas            4          72.00           288.00         
+Crema Reductora      1          25.00           25.00          
+Pesas                2          22.00           44.00          
+Pelota Fitness       2          63.00           126.00         
+Total de la venta: $483.0
+
+=========================================
+Detalles de la venta:
+Nombre del cliente: 10
+Fecha y hora de la venta: 10-12-2023 22:01:42
+Productos comprados:
+Producto             Cantidad   Precio Unitario Sub total      
+Fajas Reductoras     3          55.00           165.00         
+Pelota Fitness       2          63.00           126.00         
+Total de la venta: $291.0
+
+=========================================
+Detalles de la venta:
+Nombre del cliente: Jose
+Fecha y hora de la venta: 10-12-2023 22:02:13
+Productos comprados:
+Producto             Cantidad   Precio Unitario Sub total      
+Rueda Abdominal      2          42.00           84.00          
+Pelota Fitness       3          63.00           189.00         
+Total de la venta: $273.0
+
+=========================================
