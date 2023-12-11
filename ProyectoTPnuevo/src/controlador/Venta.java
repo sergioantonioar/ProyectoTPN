@@ -22,7 +22,7 @@ public class Venta {
     public Venta(Producto[] productos) {
     this.productos = productos;
     this.fechaHora = LocalDateTime.now();
-    this.cliente = new Cliente(); // Asegúrate de inicializar el cliente aquí
+    this.cliente = new Cliente(); 
     }
 
     // Método para realizar la venta
